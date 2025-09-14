@@ -1,8 +1,268 @@
-<html>
-  <head>
-    <title>Aayush Tution</title>
-  </head>
-  <body>
-    
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aayush Tuition</title>
+  <style>
+    /* ---------- Reset & base ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root{
+      --bg1:#0f1724;   /* deep navy */
+      --bg2:#0b2545;   /* darker blue */
+      --accent:#5eead4; /* mint */
+      --accent-2:#60a5fa; /* light blue */
+      --card:#0b1220;
+      --muted:#9aa7bf;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+    body{
+      min-height:100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1000px 600px at 10% 10%, rgba(96,165,250,0.08), transparent),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: #e6eef8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    /* ---------- Card ---------- */
+    .card{
+      width:100%;
+      max-width:420px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px;
+      border: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      color:#071028;
+      font-size:20px;
+      box-shadow: 0 6px 18px rgba(96,165,250,0.12);
+    }
+    .brand h1{
+      font-size:18px;
+      letter-spacing:0.2px;
+    }
+    .brand p{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
+
+    /* ---------- Form ---------- */
+    form{
+      margin-top:6px;
+    }
+    .field{
+      margin-bottom:14px;
+    }
+    label{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      color:inherit;
+      font-size:15px;
+      outline:none;
+      transition: box-shadow .15s ease, transform .06s ease;
+    }
+    input:focus{
+      box-shadow: 0 8px 24px rgba(96,165,250,0.08);
+      transform: translateY(-1px);
+      border-color: rgba(96,165,250,0.35);
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+      gap:12px;
+    }
+
+    .actions{
+      margin-top:8px;
+    }
+    button.primary{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border: none;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#052031;
+      box-shadow: 0 8px 20px rgba(96,165,250,0.12);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    button.primary:active{ transform: translateY(1px); }
+    .muted{
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+      margin-top:14px;
+    }
+
+    /* show password control */
+    .control{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      color:var(--muted);
+      cursor:pointer;
+      user-select:none;
+    }
+    .control input[type="checkbox"]{
+      width:16px;
+      height:16px;
+      accent-color: var(--accent);
+      cursor:pointer;
+    }
+
+    /* bottom link */
+    .bottom{
+      margin-top:20px;
+      border-top:1px dashed rgba(255,255,255,0.03);
+      padding-top:16px;
+      display:flex;
+      justify-content:center;
+    }
+    .create-link{
+      color: var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .create-link:hover{ text-decoration:underline; }
+
+    /* small caption */
+    .caption{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:6px;
+      text-align:center;
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      body{ padding:18px; }
+      .card{ padding:20px; }
+      .logo{ width:48px; height:48px; font-size:18px; border-radius:10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="card" role="main" aria-labelledby="signin-heading">
+    <header class="brand">
+      <div class="logo" aria-hidden="true">AT</div>
+      <div>
+        <h1 id="signin-heading">Aayush Tuition</h1>
+        <p>Sign in to continue to your dashboard</p>
+      </div>
+    </header>
+
+    <form id="signin-form" autocomplete="on" onsubmit="handleSubmit(event)">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter your password" required
+               aria-describedby="pwd-info" />
+        <div style="display:flex;justify-content:space-between;margin-top:8px;align-items:center;">
+          <div id="pwd-info" class="caption">Use your Aayush Tuition account password</div>
+          <label class="control" for="show-password" aria-label="Show password">
+            <input type="checkbox" id="show-password" onclick="togglePassword()" />
+            Show password
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="primary" type="submit">Sign in</button>
+      </div>
+
+      <div class="muted" style="margin-top:12px;">
+        Forgot password? <a href="#" style="color:var(--accent); text-decoration:none; font-weight:600;">Reset</a>
+      </div>
+    </form>
+
+    <div class="bottom">
+      <a class="create-link" href="#" onclick="createAccount(event)">
+        ➕ Create new account
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Toggle password visibility
+    function togglePassword(){
+      const p = document.getElementById('password');
+      const cb = document.getElementById('show-password');
+      p.type = cb.checked ? 'text' : 'password';
+    }
+
+    // Demo submit handler — replace with actual auth logic
+    function handleSubmit(e){
+      e.preventDefault();
+      // collect input values
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // basic demo validation
+      if(!email || !password){
+        alert('Please enter email and password.');
+        return;
+      }
+
+      // In a real app: post to your Flask endpoint (fetch('/login', { method:'POST', body:... }))
+      alert('Demo: Signing in as ' + email + '\\n(password length: ' + password.length + ' characters)');
+    }
+
+    // Create account clicked
+    function createAccount(e){
+      e.preventDefault();
+      // navigate to register page or show modal in real app
+      alert('Demo: Redirect to "Create new account" page.');
+    }
+  </script>
+</body>
 </html>
