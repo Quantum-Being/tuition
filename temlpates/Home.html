@@ -8,10 +8,10 @@
     /* ---------- Reset & base ---------- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root{
-      --bg1:#0f1724;   /* deep navy */
-      --bg2:#0b2545;   /* darker blue */
-      --accent:#5eead4; /* mint */
-      --accent-2:#60a5fa; /* light blue */
+      --bg1:#0f1724;
+      --bg2:#0b2545;
+      --accent:#5eead4;
+      --accent-2:#60a5fa;
       --card:#0b1220;
       --muted:#9aa7bf;
       --glass: rgba(255,255,255,0.04);
@@ -30,7 +30,6 @@
       padding:32px;
     }
 
-    /* ---------- Card ---------- */
     .card{
       width:100%;
       max-width:420px;
@@ -60,32 +59,13 @@
       font-size:20px;
       box-shadow: 0 6px 18px rgba(96,165,250,0.12);
     }
-    .brand h1{
-      font-size:18px;
-      letter-spacing:0.2px;
-    }
-    .brand p{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
-    }
+    .brand h1{ font-size:18px; letter-spacing:0.2px; }
+    .brand p{ font-size:12px; color:var(--muted); margin-top:2px; }
 
-    /* ---------- Form ---------- */
-    form{
-      margin-top:6px;
-    }
-    .field{
-      margin-bottom:14px;
-    }
-    label{
-      display:block;
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:8px;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"]{
+    form{ margin-top:6px; }
+    .field{ margin-bottom:14px; }
+    label{ display:block; font-size:13px; color:var(--muted); margin-bottom:8px; }
+    input[type="text"], input[type="email"], input[type="password"]{
       width:100%;
       padding:12px 14px;
       border-radius:10px;
@@ -102,17 +82,8 @@
       border-color: rgba(96,165,250,0.35);
     }
 
-    .row{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:10px;
-      gap:12px;
-    }
-
-    .actions{
-      margin-top:8px;
-    }
+    .row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; gap:12px; }
+    .actions{ margin-top:8px; }
     button.primary{
       width:100%;
       padding:12px 14px;
@@ -127,67 +98,21 @@
       transition: transform .12s ease, box-shadow .12s ease;
     }
     button.primary:active{ transform: translateY(1px); }
-    .muted{
-      font-size:13px;
-      color:var(--muted);
-      text-align:center;
-      margin-top:14px;
-    }
+    .muted{ font-size:13px; color:var(--muted); text-align:center; margin-top:14px; }
 
-    /* show password control */
-    .control{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-size:13px;
-      color:var(--muted);
-      cursor:pointer;
-      user-select:none;
-    }
-    .control input[type="checkbox"]{
-      width:16px;
-      height:16px;
-      accent-color: var(--accent);
-      cursor:pointer;
-    }
+    .control{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); cursor:pointer; user-select:none; }
+    .control input[type="checkbox"]{ width:16px; height:16px; accent-color: var(--accent); cursor:pointer; }
 
-    /* bottom link */
-    .bottom{
-      margin-top:20px;
-      border-top:1px dashed rgba(255,255,255,0.03);
-      padding-top:16px;
-      display:flex;
-      justify-content:center;
-    }
-    .create-link{
-      color: var(--accent);
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-    }
+    .bottom{ margin-top:20px; border-top:1px dashed rgba(255,255,255,0.03); padding-top:16px; display:flex; justify-content:center; }
+    .create-link{ color: var(--accent); text-decoration:none; font-weight:600; font-size:14px; display:inline-flex; gap:8px; align-items:center; }
     .create-link:hover{ text-decoration:underline; }
 
-    /* small caption */
-    .caption{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:6px;
-      text-align:center;
-    }
+    .caption{ font-size:12px; color:var(--muted); margin-top:6px; text-align:center; }
 
-    /* responsive */
-    @media (max-width:420px){
-      body{ padding:18px; }
-      .card{ padding:20px; }
-      .logo{ width:48px; height:48px; font-size:18px; border-radius:10px; }
-    }
+    @media (max-width:420px){ body{ padding:18px; } .card{ padding:20px; } .logo{ width:48px; height:48px; font-size:18px; border-radius:10px; } }
   </style>
 </head>
 <body>
-
   <main class="card" role="main" aria-labelledby="signin-heading">
     <header class="brand">
       <div class="logo" aria-hidden="true">AT</div>
@@ -226,41 +151,30 @@
     </form>
 
     <div class="bottom">
-      <a class="create-link" href="#" onclick="createAccount(event)">
-        ➕ Create new account
-      </a>
+      <a class="create-link" href="#" onclick="createAccount(event)">➕ Create new account</a>
     </div>
   </main>
 
   <script>
-    // Toggle password visibility
     function togglePassword(){
       const p = document.getElementById('password');
       const cb = document.getElementById('show-password');
       p.type = cb.checked ? 'text' : 'password';
     }
 
-    // Demo submit handler — replace with actual auth logic
     function handleSubmit(e){
       e.preventDefault();
-      // collect input values
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-
-      // basic demo validation
       if(!email || !password){
         alert('Please enter email and password.');
         return;
       }
-
-      // In a real app: post to your Flask endpoint (fetch('/login', { method:'POST', body:... }))
       alert('Demo: Signing in as ' + email + '\\n(password length: ' + password.length + ' characters)');
     }
 
-    // Create account clicked
     function createAccount(e){
       e.preventDefault();
-      // navigate to register page or show modal in real app
       alert('Demo: Redirect to "Create new account" page.');
     }
   </script>
